@@ -1,15 +1,16 @@
 import Link from 'next/link';
-import fetch from 'isomorphic-unfetch';
+
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 import axios from 'axios';
 
 interface People {
-  data:[{  avatar: string;
+  data:[
+    {avatar: string;
     email: string;
     first_name: string,
     id: number;
-    last_name: string;}]
-
+    last_name: string;}
+  ]
 }
 
 

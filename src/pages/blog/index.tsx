@@ -1,7 +1,6 @@
 import React from 'react'
+const contentful = require('contentful')
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
-import contentful from 'contentful'
-
 
 const client = contentful.createClient({
  accessToken: 'dhVJpVQBppuvMv-Mjw_E_44PenQra3jVn-s8nvKMDFc',
@@ -9,25 +8,30 @@ const client = contentful.createClient({
 })
 
 
+interface Props {
+    
+}
+
+const index = ({data}: Props) => {
+    console.log(data);
+    return (
+        <div>
+            hey
+        </div>
+    )
+}
+
+
 export const getStaticProps:GetStaticProps = async () => {
   
-    const response =  await client.getEntries()
+    const response = await client.getContentType('myBlog')
     
     return {
       props: {
-       data:response
+       data: response
       },
     };
   };
   
-
-const index = ({data}) => {
-    console.log(data);
-    return (
-        <div>
-            fff
-        </div>
-    )
-}
 
 export default index
